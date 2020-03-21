@@ -1,20 +1,18 @@
 package com.vibe.desafiovibe.dto;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class DadosDTO implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class DadosDTO<T> {
 
-	private List<DeputadoDTO> dados;
+	private T dados;
 	
 	private List<LinkDTO> links;
-	
-	public List<DeputadoDTO> getDados() {
+
+	public T getDados() {
 		return dados;
 	}
 
-	public void setDados(List<DeputadoDTO> dados) {
+	public void setDados(T dados) {
 		this.dados = dados;
 	}
 
