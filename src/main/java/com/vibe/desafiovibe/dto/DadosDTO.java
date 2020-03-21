@@ -2,6 +2,11 @@ package com.vibe.desafiovibe.dto;
 
 import java.util.List;
 
+/**
+ * Classe utilizada para receber os dados das requisições feitas na API da camara legislativa.
+ * 
+ * @author Filipe
+ * */
 public class DadosDTO<T> {
 
 	private T dados;

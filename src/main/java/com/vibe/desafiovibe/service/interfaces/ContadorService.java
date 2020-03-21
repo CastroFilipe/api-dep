@@ -8,6 +8,8 @@ public interface ContadorService {
 
 	/**
 	 * Faz a busca de contadores para cada um dos ids presentes na lista passada como parâmetro.
+	 * 
+	 * @author Filipe
 	 * */
 	public List<Contador> buscarContadores(List<Long> idsDeputados);
 	
@@ -15,6 +17,8 @@ public interface ContadorService {
 	 * Incrementa o contador de visualizações de um deputado quando o parlamentar receber uma visualização.
 	 * Se o parlamentar não possuir visualizações então será adicionado um novo contador na base de dados.
 	 * A partir disso, a cada nova visualização será incrementado o valor do contador já existente.
+	 * 
+	 * @author Filipe
 	 * */
 	public void incrementar(Long idDeputado);
 	

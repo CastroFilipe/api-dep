@@ -12,6 +12,8 @@ public interface DeputadoClient {
 	 * 
 	 * @param pagina o número da página.
 	 * @param itens a quantidade de itens por página.
+	 * 
+	 * @author Filipe
 	 * */
 	public List<DeputadoDTO> buscarDeputados(Integer pagina, Integer itens);
 	
@@ -19,6 +21,8 @@ public interface DeputadoClient {
 	 * Faz a busca detalhada das informações de uma deputado.
 	 * 
 	 * @param id o identificador do deputado
+	 * 
+	 * @author Filipe
 	 * */
 	public DeputadoDetalhesDTO buscarDetalhes(Long id);
 

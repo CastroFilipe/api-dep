@@ -26,7 +26,7 @@ public class DeputadoResource {
 	
 	@Autowired
 	DespesaService despesaService;
-
+	
 	@GetMapping
 	public ResponseEntity<List<DeputadoDTO>> buscarDeputados(
 			@RequestParam(value = "pagina", defaultValue = "1", required = false) Integer pagina,

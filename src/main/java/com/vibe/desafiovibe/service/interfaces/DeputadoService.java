@@ -11,8 +11,9 @@ public interface DeputadoService {
 	 * Retorna as informações básicas dos deputados.
 	 * 
 	 * @param pagina o número da página.
-	 * @param itens quantidade de itens por página
+	 * @param itens quantidade de itens por página.
 	 * 
+	 * @author Filipe
 	 * */
 	public List<DeputadoDTO> buscarDeputados(Integer pagina, Integer itens);
 	
@@ -21,6 +22,7 @@ public interface DeputadoService {
 	 * 
 	 * @param id o identificador do parlamentar.
 	 * 
+	 * @author Filipe
 	 * */
 	public DeputadoDetalhesDTO buscarDetetalhes(Long id);
 }
