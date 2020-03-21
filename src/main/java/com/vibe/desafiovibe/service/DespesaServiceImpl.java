@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.vibe.desafiovibe.clients.interfaces.DespesaClient;
 import com.vibe.desafiovibe.dto.DespesaDetalhesDTO;
 import com.vibe.desafiovibe.service.interfaces.DespesaService;
+import com.vibe.desafiovibe.utils.ParametrosConsulta;
 
 @Service
 public class DespesaServiceImpl implements DespesaService {
@@ -16,9 +17,8 @@ public class DespesaServiceImpl implements DespesaService {
 	private DespesaClient despesaClient;
 	
 	@Override
-	public List<DespesaDetalhesDTO> buscarDespesas(Long id) {
+	public List<DespesaDetalhesDTO> buscarDespesas(Long id, ParametrosConsulta parametros) {
 		
-		return despesaClient.buscarDespesas(id);
+		return despesaClient.buscarDespesas(id, parametros);
 	}
-
 }
