@@ -19,18 +19,21 @@ public class ContadorServiceImpl implements ContadorService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Contador> buscarContadores(List<Long> idsDeputados) {
-		return contadorRepository.buscarContadores(idsDeputados);
+		return contadorRepository.find(idsDeputados);
 	}
 
 	@Override
-	public Contador inserirNovo(Long idDeputado) {
-		// TODO Auto-generated method stub
-		return null;
+	@Transactional
+	public void incrementar(Long idDeputado) {
+		Contador contador = contadorRepository.findByIdDeputado(idDeputado).orElse(new Contador());
+		
+		if(contador.getId() == null) {
+			contador = new Contador(null, idDeputado, 1);
+		} else {
+			contador.setTotalVisitas(contador.getTotalVisitas()+1);
+		}
+		
+		contadorRepository.save(contador);
 	}
-
-	@Override
-	public void incrementar(Contador contador) {
-		// TODO Auto-generated method stub	
-	}
-
+	
 }

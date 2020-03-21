@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vibe.desafiovibe.clients.DeputadosClient;
 import com.vibe.desafiovibe.domain.Contador;
@@ -37,7 +38,9 @@ public class DeputadoServiceImpl implements DeputadoService {
 	}
 	
 	@Override
+	@Transactional
 	public DeputadoDetalhesDTO buscarDetetalhes(Long id) {
+		contadorService.incrementar(id);
 		return deputadosClient.buscarDetalhes(id);
 	}
 	

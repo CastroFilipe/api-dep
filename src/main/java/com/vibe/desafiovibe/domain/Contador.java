@@ -27,6 +27,17 @@ public class Contador {
 	
 	@Column(name = "TOTAL_VISITAS", nullable = false)
 	private Integer totalVisitas;
+	
+	public Contador() {
+		super();
+	}
+
+	public Contador(Long id, Long idDeputado, Integer totalVisitas) {
+		super();
+		this.id = id;
+		this.idDeputado = idDeputado;
+		this.totalVisitas = totalVisitas;
+	}
 
 	public Long getId() {
 		return id;

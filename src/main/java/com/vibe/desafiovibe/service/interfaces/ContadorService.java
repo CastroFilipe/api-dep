@@ -12,13 +12,10 @@ public interface ContadorService {
 	public List<Contador> buscarContadores(List<Long> idsDeputados);
 	
 	/**
-	 * Adiciona um novo contador na base de dados caso o parlamentar não tenha visualizações.
+	 * Incrementa o contador de visualizações de um deputado quando o parlamentar receber uma visualização.
+	 * Se o parlamentar não possuir visualizações então será adicionado um novo contador na base de dados.
+	 * A partir disso, a cada nova visualização será incrementado o valor do contador já existente.
 	 * */
-	public Contador inserirNovo(Long idDeputado);
-
-	/**
-	 * Incrementa o contador de visualizações de um deputado.
-	 * */
-	public void incrementar(Contador contador);
+	public void incrementar(Long idDeputado);
 	
 }
