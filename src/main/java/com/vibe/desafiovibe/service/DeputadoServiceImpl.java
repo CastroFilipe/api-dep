@@ -5,23 +5,22 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.vibe.desafiovibe.clients.DeputadosClient;
 import com.vibe.desafiovibe.domain.Contador;
 import com.vibe.desafiovibe.dto.DeputadoDTO;
 import com.vibe.desafiovibe.dto.DeputadoDetalhesDTO;
-import com.vibe.desafiovibe.repository.ContadorRepository;
+import com.vibe.desafiovibe.service.interfaces.ContadorService;
 import com.vibe.desafiovibe.service.interfaces.DeputadoService;
 
 @Service
 public class DeputadoServiceImpl implements DeputadoService {
 	
 	@Autowired
-	private ContadorRepository contadorRepository;
+	private DeputadosClient deputadosClient;
 	
 	@Autowired
-	private DeputadosClient deputadosClient;
+	private ContadorService contadorService;
 
 	@Override
 	public List<DeputadoDTO> buscarDeputados(Integer pagina, Integer itens) {
@@ -32,7 +31,7 @@ public class DeputadoServiceImpl implements DeputadoService {
 			return d.getId();
 		}).collect(Collectors.toList());
 		
-		List<Contador> contadores = buscarContadores(idsDeputados);
+		List<Contador> contadores = contadorService.buscarContadores(idsDeputados);
 		
 		return vincularTotalVisitas(deputados, contadores); 
 	}
@@ -40,11 +39,6 @@ public class DeputadoServiceImpl implements DeputadoService {
 	@Override
 	public DeputadoDetalhesDTO buscarDetetalhes(Long id) {
 		return deputadosClient.buscarDetalhes(id);
-	}
-	
-	@Transactional(readOnly = true)
-	private List<Contador> buscarContadores(List<Long> idsDeputados){
-		return contadorRepository.buscarContadores(idsDeputados);
 	}
 	
 	private List<DeputadoDTO> vincularTotalVisitas(List<DeputadoDTO> deputados, List<Contador> contadores){
