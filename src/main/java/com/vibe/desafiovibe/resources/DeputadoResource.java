@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vibe.desafiovibe.dto.DeputadoDTO;
+import com.vibe.desafiovibe.dto.DeputadoDetalhesDTO;
 import com.vibe.desafiovibe.service.interfaces.DeputadoService;
 
 @RestController
@@ -25,5 +27,11 @@ public class DeputadoResource {
 			@RequestParam(value = "itens", defaultValue = "5", required = false) Integer itens) {
 
 		return ResponseEntity.ok().body(deputadoService.buscarDeputados(pagina, itens));
+	}
+	
+	@GetMapping("{id}")
+	public ResponseEntity<DeputadoDetalhesDTO> buscarDetalhes(@PathVariable Long id) {
+
+		return ResponseEntity.ok().body(deputadoService.buscarDetetalhes(id));
 	}
 }

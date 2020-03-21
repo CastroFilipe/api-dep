@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.vibe.desafiovibe.dto.DadosDTO;
 import com.vibe.desafiovibe.dto.DeputadoDTO;
+import com.vibe.desafiovibe.dto.DeputadoDetalhesDTO;
 
 @Service
 public class DeputadosClient {
@@ -29,4 +30,14 @@ public class DeputadosClient {
 		return dados.getDados();
 	}
 
+	public DeputadoDetalhesDTO buscarDetalhes(Long id) {
+		DadosDTO<DeputadoDetalhesDTO> dados = template.exchange(
+				"https://dadosabertos.camara.leg.br/api/v2/deputados/{id}",
+				HttpMethod.GET,
+				null,
+				new ParameterizedTypeReference<DadosDTO<DeputadoDetalhesDTO>>() {},
+				id).getBody();
+		
+		return dados.getDados();
+	}
 }

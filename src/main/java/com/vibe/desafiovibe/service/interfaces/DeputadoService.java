@@ -3,6 +3,7 @@ package com.vibe.desafiovibe.service.interfaces;
 import java.util.List;
 
 import com.vibe.desafiovibe.dto.DeputadoDTO;
+import com.vibe.desafiovibe.dto.DeputadoDetalhesDTO;
 
 public interface DeputadoService {
 	
@@ -14,4 +15,12 @@ public interface DeputadoService {
 	 * 
 	 * */
 	public List<DeputadoDTO> buscarDeputados(Integer pagina, Integer itens);
+	
+	/**
+	 * Retorna as informações detalhadas de um Deputado.
+	 * 
+	 * @param id o identificador do parlamentar.
+	 * 
+	 * */
+	public DeputadoDetalhesDTO buscarDetetalhes(Long id);
 }

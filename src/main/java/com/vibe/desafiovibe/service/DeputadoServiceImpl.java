@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.vibe.desafiovibe.clients.DeputadosClient;
 import com.vibe.desafiovibe.domain.Contador;
 import com.vibe.desafiovibe.dto.DeputadoDTO;
+import com.vibe.desafiovibe.dto.DeputadoDetalhesDTO;
 import com.vibe.desafiovibe.repository.ContadorRepository;
 import com.vibe.desafiovibe.service.interfaces.DeputadoService;
 
@@ -34,6 +35,11 @@ public class DeputadoServiceImpl implements DeputadoService {
 		List<Contador> contadores = buscarContadores(idsDeputados);
 		
 		return vincularTotalVisitas(deputados, contadores); 
+	}
+	
+	@Override
+	public DeputadoDetalhesDTO buscarDetetalhes(Long id) {
+		return deputadosClient.buscarDetalhes(id);
 	}
 	
 	@Transactional(readOnly = true)
