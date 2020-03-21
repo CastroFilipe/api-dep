@@ -11,7 +11,7 @@ Este projeto fornece uma API para consultas de dados de parlamentares da câmara
 - PostgreSQL
 - SQL 
 
-#### OBS: O projeto não possui interface para usuários(front-end) apenas a API com os recursos disponibilizados e documentados. O front end seria feito com o framework Vue.js todavia, devido a motivos pessoais, não tive tempo(outros projetos em Vue podem ser visto no meu perfil).
+##### OBS: O projeto não possui interface para usuários(front-end) apenas a API com os recursos disponibilizados e documentados. O front end seria feito com o framework Vue.js todavia, devido a motivos pessoais, não tive tempo(outros projetos em Vue podem ser visto no meu perfil).
 
 ### Instruções de execução.
 Importar o projeto para alguma IDE e criar a base de dados nomeada como ‘base’.
