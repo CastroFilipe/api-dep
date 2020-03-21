@@ -16,12 +16,14 @@ import com.vibe.desafiovibe.dto.DeputadoDetalhesDTO;
 @Service
 public class DeputadoClientImpl implements DeputadoClient {
 	
+	private static final String baseUrl = "https://dadosabertos.camara.leg.br/api/v2/deputados";
+	
 	@Autowired
 	RestTemplate template;
 	
 	public List<DeputadoDTO> buscarDeputados(Integer pagina, Integer itens) {
 		DadosDTO<List<DeputadoDTO>> dados = template.exchange(
-				"https://dadosabertos.camara.leg.br/api/v2/deputados?pagina={pagina}&itens={itens}",
+				baseUrl.concat("?pagina={pagina}&itens={itens}"),
 				HttpMethod.GET,
 				null,
 				new ParameterizedTypeReference<DadosDTO<List<DeputadoDTO>>>() {},
@@ -33,7 +35,7 @@ public class DeputadoClientImpl implements DeputadoClient {
 
 	public DeputadoDetalhesDTO buscarDetalhes(Long id) {
 		DadosDTO<DeputadoDetalhesDTO> dados = template.exchange(
-				"https://dadosabertos.camara.leg.br/api/v2/deputados/{id}",
+				baseUrl.concat("/{id}"),
 				HttpMethod.GET,
 				null,
 				new ParameterizedTypeReference<DadosDTO<DeputadoDetalhesDTO>>() {},
