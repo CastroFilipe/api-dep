@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.vibe.desafiovibe.clients.DeputadosClient;
+import com.vibe.desafiovibe.clients.DeputadoClientImpl;
 import com.vibe.desafiovibe.domain.Contador;
 import com.vibe.desafiovibe.dto.DeputadoDTO;
 import com.vibe.desafiovibe.dto.DeputadoDetalhesDTO;
@@ -18,14 +18,14 @@ import com.vibe.desafiovibe.service.interfaces.DeputadoService;
 public class DeputadoServiceImpl implements DeputadoService {
 	
 	@Autowired
-	private DeputadosClient deputadosClient;
+	private DeputadoClientImpl deputadoClientImpl;
 	
 	@Autowired
 	private ContadorService contadorService;
 
 	@Override
 	public List<DeputadoDTO> buscarDeputados(Integer pagina, Integer itens) {
-		List<DeputadoDTO> deputados = deputadosClient.buscarDeputados(pagina, itens);
+		List<DeputadoDTO> deputados = deputadoClientImpl.buscarDeputados(pagina, itens);
 		
 		//pega os ids de todos os deputados retornados.
 		List<Long> idsDeputados = deputados.parallelStream().map(d -> {
@@ -41,7 +41,7 @@ public class DeputadoServiceImpl implements DeputadoService {
 	@Transactional
 	public DeputadoDetalhesDTO buscarDetetalhes(Long id) {
 		contadorService.incrementar(id);
-		return deputadosClient.buscarDetalhes(id);
+		return deputadoClientImpl.buscarDetalhes(id);
 	}
 	
 	private List<DeputadoDTO> vincularTotalVisitas(List<DeputadoDTO> deputados, List<Contador> contadores){

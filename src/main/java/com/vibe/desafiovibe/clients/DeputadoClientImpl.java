@@ -8,12 +8,13 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.vibe.desafiovibe.clients.interfaces.DeputadoClient;
 import com.vibe.desafiovibe.dto.DadosDTO;
 import com.vibe.desafiovibe.dto.DeputadoDTO;
 import com.vibe.desafiovibe.dto.DeputadoDetalhesDTO;
 
 @Service
-public class DeputadosClient {
+public class DeputadoClientImpl implements DeputadoClient {
 	
 	@Autowired
 	RestTemplate template;

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.vibe.desafiovibe.dto.DeputadoDTO;
 import com.vibe.desafiovibe.dto.DeputadoDetalhesDTO;
+import com.vibe.desafiovibe.dto.DespesaDetalhesDTO;
 import com.vibe.desafiovibe.service.interfaces.DeputadoService;
+import com.vibe.desafiovibe.service.interfaces.DespesaService;
 
 @RestController
 @RequestMapping("/deputados")
@@ -20,6 +22,9 @@ public class DeputadoResource {
 
 	@Autowired
 	DeputadoService deputadoService;
+	
+//	@Autowired
+//	DespesaService despesaService;
 
 	@GetMapping
 	public ResponseEntity<List<DeputadoDTO>> buscarDeputados(
@@ -29,9 +34,15 @@ public class DeputadoResource {
 		return ResponseEntity.ok().body(deputadoService.buscarDeputados(pagina, itens));
 	}
 	
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<DeputadoDetalhesDTO> buscarDetalhes(@PathVariable Long id) {
 
 		return ResponseEntity.ok().body(deputadoService.buscarDetetalhes(id));
 	}
+	
+//	@GetMapping("/{id}/despesas")
+//	public ResponseEntity<List<DespesaDetalhesDTO>> buscarDespesas(@PathVariable Long id){
+//	
+//		return ResponseEntity.ok().body(despesaService.buscarDespesas(id));
+//	}
 }
